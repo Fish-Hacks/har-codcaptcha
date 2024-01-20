@@ -9,11 +9,7 @@ project_dir = Path.home() / 'har-codcaptcha'
 
 app = FastAPI()
 transcriber = Transcriber()
-transcription_captcha_completion_file = project_dir / 'passphrase.log'
 aggregate_file = project_dir / 'packet_aggregate.log'
-
-if not transcription_captcha_completion_file.exists():
-    transcription_captcha_completion_file.touch()
 
 if not aggregate_file.exists():
     aggregate_file.touch()
@@ -39,7 +35,6 @@ def get_packets_transferred():
 @app.post('/stt')
 def do_passphrase_captcha(req: PassphraseRequest):
     is_complete = transcriber.transcribe(req.text)
-    transcription_captcha_completion_file.write_text('1' if is_complete else '0')
     return CaptchaResponse(is_complete)
 
 
