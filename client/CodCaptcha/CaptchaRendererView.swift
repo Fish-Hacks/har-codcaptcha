@@ -18,16 +18,16 @@ struct CaptchaRendererView: View {
                 validationManager.loadNextCaptcha(didSucceed: didSucceed)
             }
         case .iris:
-            IrisScanningView {
-                validationManager.loadNextCaptcha(didSucceed: true)
+            IrisScanningView { didSucceed in
+                validationManager.loadNextCaptcha(didSucceed: didSucceed)
             }
         case .scissorsPaperStone:
             ScissorsPaperStoneView { didSucceed in
                 validationManager.loadNextCaptcha(didSucceed: didSucceed)
             }
-        case .speech:
-            Text("Speech")
-            Spacer()
+//        case .speech:
+//            Text("Speech")
+//            Spacer()
         case .waldo:
             WaldoView { didSucceed in
                 validationManager.loadNextCaptcha(didSucceed: didSucceed)

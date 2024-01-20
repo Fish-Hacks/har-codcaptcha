@@ -10,6 +10,8 @@ import Subsonic
 
 struct TakeOverView: View {
     
+    var size: Int
+    
     @StateObject var validationManager = CAPTCHAValidationManager()
     
     @State private var showBackgroundBlur = false
@@ -90,7 +92,7 @@ struct TakeOverView: View {
                             Text("**`\(validationManager.numberOfKilobytes) KB`** sent and received")
                                 .font(.title3)
                             
-                            Text("For every 10 megabytes of data sent or received, you will have to solve a CAPTCHA.")
+                            Text("For every 10 kilobytes of data sent or received, you will have to solve a CAPTCHA.")
                                 .font(.body)
                             
                             Divider()
@@ -234,6 +236,7 @@ struct TakeOverView: View {
             .keyboardShortcut(KeyEquivalent("d"), modifiers: .command)
         }
         .onAppear {
+            validationManager.numberOfKilobytes = size
             withAnimation {
                 showPopupSheet = true
             }

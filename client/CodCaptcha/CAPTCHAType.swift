@@ -11,7 +11,7 @@ enum CAPTCHAType: CaseIterable {
     case selectPhoto
     case iris
     case scissorsPaperStone
-    case speech
+//    case speech
     case waldo
     
     static func random() -> Self {
@@ -23,7 +23,7 @@ enum CAPTCHAType: CaseIterable {
         case .selectPhoto: "Select Photo"
         case .iris: "Iris"
         case .scissorsPaperStone: "Scissors Paper Stone"
-        case .speech: "Speech"
+//        case .speech: "Speech"
         case .waldo: "Waldo"
         }
     }

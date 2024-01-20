@@ -1,35 +1,19 @@
 //
-//  IrisScanningView.swift
+//  SpeechToTextView.swift
 //  CodCaptcha
 //
-//  Created by Jia Chen Yee on 20/1/24.
+//  Created by Jia Chen Yee on 21/1/24.
 //
 
 import SwiftUI
 
-struct IrisScanningView: View {
+struct SpeechToTextView: View {
     
     var onCompletion: ((Bool) -> Void)
     
-    @State private var irisScannerTop = false
-    
     var body: some View {
         VStack(alignment: .center) {
-            ZStack {
-                Image(systemName: "viewfinder")
-                    .font(.system(size: 200))
-                Image(systemName: "eye")
-                    .font(.system(size: 100))
-                
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.blue)
-                    .frame(width: 300, height: 20)
-                    .frame(maxHeight: .infinity, alignment: irisScannerTop ? .top : .bottom)
-            }
-            .frame(width: 300, height: 200)
-            .padding(.bottom)
-            
-            Text("Scan Your Iris")
+            Text("Speak")
                 .font(.title)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
@@ -38,11 +22,6 @@ struct IrisScanningView: View {
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear {
-            withAnimation(.linear(duration: 5).repeatForever(autoreverses: true)) {
-                irisScannerTop.toggle()
-            }
-        }
         .task {
             let configuration = URLSessionConfiguration.default
             configuration.timeoutIntervalForRequest = 120
@@ -52,7 +31,12 @@ struct IrisScanningView: View {
             let url = URL(string: "http://127.0.0.1:5000/iris")!
             
             var request = URLRequest(url: url)
-            request.httpMethod = "GET"
+            request.httpMethod = "POST"
+            request.httpBody = """
+{
+    "text": "i feel that this project should win"
+}
+""".data(using: .utf8)
             request.timeoutInterval = 120
             
             print(Date.now)
