@@ -66,7 +66,10 @@ class ViewController: NSViewController {
     }
     
     func createPopover() {
-        let controller = NSHostingController(rootView: TakeOverView())
+        let controller = NSHostingController(rootView: TakeOverView {
+            self.view.window!.setFrame(.zero, display: true)
+            self.view.subviews.first?.removeFromSuperview()
+        })
         
         controller.preferredContentSize = NSScreen.main!.frame.size
         

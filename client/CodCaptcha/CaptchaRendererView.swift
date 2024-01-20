@@ -18,11 +18,14 @@ struct CaptchaRendererView: View {
                 validationManager.loadNextCaptcha(didSucceed: didSucceed)
             }
         case .iris:
-            EmptyView()
+            Text("Iris")
+            Spacer()
         case .scissorsPaperStone:
-            EmptyView()
+            Text("SPS")
+            Spacer()
         case .speech:
-            EmptyView()
+            Text("Speech")
+            Spacer()
         }
     }
 }

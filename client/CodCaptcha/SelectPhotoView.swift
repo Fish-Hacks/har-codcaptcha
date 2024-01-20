@@ -122,7 +122,7 @@ struct SelectPhotoView: View {
             .buttonStyle(.plain)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(width: 300)
+        .frame(width: 350)
         .frame(maxWidth: .infinity, alignment: .center)
     }
 }

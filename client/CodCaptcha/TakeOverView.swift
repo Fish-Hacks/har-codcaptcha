@@ -17,6 +17,8 @@ struct TakeOverView: View {
     @State private var fishOffsetX = 1000.0
     @State private var fishOffsetY = 500.0
     
+    var destroySelf: (() -> Void)
+    
     var body: some View {
         ZStack {
             if showBackgroundBlur {
@@ -49,7 +51,7 @@ struct TakeOverView: View {
                         CaptchaRendererView()
                             .environmentObject(validationManager)
                         
-                        Text("\(validationManager.currentChallengeIndex + 1) of \(validationManager.numberOfKilobytes)")
+                        Text("\(validationManager.currentChallengeIndex + 1) of \(validationManager.challengeCount)")
                             .contentTransition(.numericText())
                             .monospacedDigit()
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -87,9 +89,10 @@ struct TakeOverView: View {
                 }
             }
         }
+        .onChange(of: validationManager.success) { value in
+            if value {
+                destroySelf()
+            }
+        }
     }
-}
-
-#Preview {
-    TakeOverView()
 }
