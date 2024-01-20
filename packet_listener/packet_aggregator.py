@@ -21,9 +21,11 @@ threshold_kB = 1_000
 
 
 def parse_packet_size(packet: str) -> int:
-    if len(packet) <= 0 or 'length' not in packet:
+    if len(packet) <= 0:
         return 0
-    *_, size = packet.split()
+    *_, length_str, size = packet.split()
+    if length_str != 'length':
+        return 0
     size_int = non_numeric.sub('', size)
     return int(size_int) if len(size_int) > 0 else 0
 
@@ -39,8 +41,8 @@ end = time()
 
 if packet_size_kB > 100_000:
     print('Packet size is too large, skipping...')
-
-new_size_kB = packet_size_kB + current_size_kB
-print(f"Took {(end - start) * 1_000_000:.3f}μs to parse {packet_count} packets. Agg: {new_size_kB}kB")
-exceeds_threshold = new_size_kB >= threshold_kB
-aggregate_file.write_text(f"{new_size_kB - threshold_kB if exceeds_threshold else new_size_kB}")
+else:
+    new_size_kB = packet_size_kB + current_size_kB
+    print(f"Took {(end - start) * 1_000_000:.3f}μs to parse {packet_count} packets. Agg: {new_size_kB}kB")
+    exceeds_threshold = new_size_kB >= threshold_kB
+    aggregate_file.write_text(f"{new_size_kB - threshold_kB if exceeds_threshold else new_size_kB}")
