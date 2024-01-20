@@ -17,7 +17,6 @@ class CAPTCHAValidationManager: ObservableObject {
             
         }
     }
-    @Published var captchaContent: CAPTCHARenderingData? = .selectPhoto
     
     init(numberOfKilobytes: Int = 10) {
         self.numberOfKilobytes = numberOfKilobytes
@@ -26,7 +25,6 @@ class CAPTCHAValidationManager: ObservableObject {
     func loadNextCaptcha(didSucceed: Bool) {
         withAnimation {
             currentCaptcha = .random()
-//            captchaContent =
             
             if didSucceed {
                 currentChallengeIndex += 1

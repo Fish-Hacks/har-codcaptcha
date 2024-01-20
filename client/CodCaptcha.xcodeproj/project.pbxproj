@@ -11,7 +11,6 @@
 		329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */; };
 		329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */; };
 		329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */; };
-		329CF6092B5BB18B0043FC18 /* CAPTCHARenderingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6082B5BB18B0043FC18 /* CAPTCHARenderingData.swift */; };
 		329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */; };
 		329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */; };
 		32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C53ACB2B5B7A08004DED18 /* AppDelegate.swift */; };
@@ -25,7 +24,6 @@
 		329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOverView.swift; sourceTree = "<group>"; };
 		329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAType.swift; sourceTree = "<group>"; };
 		329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAValidationManager.swift; sourceTree = "<group>"; };
-		329CF6082B5BB18B0043FC18 /* CAPTCHARenderingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHARenderingData.swift; sourceTree = "<group>"; };
 		329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaRendererView.swift; sourceTree = "<group>"; };
 		329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoView.swift; sourceTree = "<group>"; };
 		32C53AC82B5B7A08004DED18 /* CodCaptcha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodCaptcha.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,14 +45,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		329CF60E2B5BBA940043FC18 /* Captcha Rendering Data */ = {
-			isa = PBXGroup;
-			children = (
-				329CF6082B5BB18B0043FC18 /* CAPTCHARenderingData.swift */,
-			);
-			path = "Captcha Rendering Data";
-			sourceTree = "<group>";
-		};
 		32C53ABF2B5B7A07004DED18 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +72,6 @@
 				329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */,
 				329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */,
 				325DC82B2B5BC9A400E35FA2 /* images */,
-				329CF60E2B5BBA940043FC18 /* Captcha Rendering Data */,
 				32C53ACF2B5B7A09004DED18 /* Assets.xcassets */,
 				32C53AD12B5B7A09004DED18 /* Main.storyboard */,
 				32C53AD42B5B7A09004DED18 /* CodCaptcha.entitlements */,
@@ -163,7 +152,6 @@
 			files = (
 				32C53ACE2B5B7A08004DED18 /* ViewController.swift in Sources */,
 				329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */,
-				329CF6092B5BB18B0043FC18 /* CAPTCHARenderingData.swift in Sources */,
 				329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */,
 				329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */,
 				32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */,

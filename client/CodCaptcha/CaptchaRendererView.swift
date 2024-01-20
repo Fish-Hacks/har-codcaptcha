@@ -12,22 +12,17 @@ struct CaptchaRendererView: View {
     @EnvironmentObject var validationManager: CAPTCHAValidationManager
     
     var body: some View {
-        if validationManager.captchaContent?.value != validationManager.currentCaptcha {
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else {
-            switch validationManager.captchaContent! {
-            case .selectPhoto:
-                SelectPhotoView { didSucceed in
-                    validationManager.loadNextCaptcha(didSucceed: didSucceed)
-                }
-            case .iris:
-                EmptyView()
-            case .scissorsPaperStone:
-                EmptyView()
-            case .speech:
-                EmptyView()
+        switch validationManager.currentCaptcha {
+        case .selectPhoto:
+            SelectPhotoView { didSucceed in
+                validationManager.loadNextCaptcha(didSucceed: didSucceed)
             }
+        case .iris:
+            EmptyView()
+        case .scissorsPaperStone:
+            EmptyView()
+        case .speech:
+            EmptyView()
         }
     }
 }
