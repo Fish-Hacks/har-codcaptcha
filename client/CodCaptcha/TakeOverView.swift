@@ -92,7 +92,7 @@ struct TakeOverView: View {
                             Text("**`\(validationManager.numberOfKilobytes) KB`** sent and received")
                                 .font(.title3)
                             
-                            Text("For every 10 kilobytes of data sent or received, you will have to solve a CAPTCHA.")
+                            Text("For every megabyte of data sent or received, you will have to solve a CAPTCHA.")
                                 .font(.body)
                             
                             Divider()

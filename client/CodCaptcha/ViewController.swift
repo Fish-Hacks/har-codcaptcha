@@ -44,7 +44,7 @@ class ViewController: NSViewController {
             if sizeInKB >= 1024 {
                 await MainActor.run {
                     if self.popover == nil {
-                        self.createPopover(with: sizeInKB)
+                        self.createPopover(with: Int(round(sizeInKB)))
                     }
                 }
             }
