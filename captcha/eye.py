@@ -1,98 +1,108 @@
 import numpy as np
 import cv2
 
-eye_cascade = cv2.CascadeClassifier('./cascades/haarcascade_eye.xml')
-cap = cv2.VideoCapture(0)
+class EyeCaptcha:
+    def __init__(self):
+        self.eye_cascade = cv2.CascadeClassifier(r'C:\Users\Addison\Desktop\har-codcaptcha\captcha\haarcascade_eye.xml')
+        self.cap = cv2.VideoCapture(0)
+        self.diameter = []
+        self.blink = False
+        self.bcount = -1
+        self.kernel = np.ones((5, 5), np.uint8)
+        self.font = cv2.FONT_HERSHEY_SIMPLEX
+        self.threshold_value = 20
+        self.verified_frame = 0
+        self.succeeded = False
 
-diameter = []
-blink = False
-bcount = -1
-kernel = np.ones((5, 5), np.uint8)
-global a
-font = cv2.FONT_HERSHEY_SIMPLEX
 
-# Adjust the threshold value as needed
-threshold_value = 20
-scale_w = 0
-scale_h = 0
-verified_frame = 0
+    def detect_and_verify(self):
+        try:
+            while True:
+                ret, img = self.cap.read()
+                gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                eyes = self.eye_cascade.detectMultiScale(gray, 1.1, 7)
 
-try:
-    while 1:
-        ret, img = cap.read()
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        eyes = eye_cascade.detectMultiScale(gray, 1.1, 7)
+                if len(eyes) > 0:
+                    self.blink = False
+                    self.draw_eye_info(img, gray, eyes)
+                    self.verify_eye_scale(img, eyes)
+                else:
+                    self.handle_eye_closed(img)
 
-        if len(eyes) > 0:
-            a = "Eye Open"
+                if self.verified_frame >= 50:
+                    print("VERIFIED")
+                    self.verified_frame = 0
+                    self.succeeded = True
+                    break
 
-            if blink == True:
-                blink = False
+                cv2.imshow('img', img)
+                k = cv2.waitKey(30) & 0xff
+                if k == 27:
+                    break
 
-            cv2.putText(img, a, (10, 30), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+            self.cap.release()
+            cv2.destroyAllWindows()
+        except Exception as e:
+            print(e)
+            self.cap.release()
+            cv2.destroyAllWindows()
 
-            for (ex, ey, ew, eh) in eyes:
-                cv2.rectangle(img, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)  # Add bounding box around eyes
+    def draw_eye_info(self, img, gray, eyes):
+        a = "Eye Open"
+        cv2.putText(img, a, (10, 30), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
-                # Calculate scale relative to the size of the webcam window
-                scale_w = ew / img.shape[1]
-                scale_h = eh / img.shape[0]
+        for (ex, ey, ew, eh) in eyes:
+            cv2.rectangle(img, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)  # Add bounding box around eyes
 
-                cv2.putText(img, f"Scale (W): {scale_w:.2f}", (10, 100), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
-                cv2.putText(img, f"Scale (H): {scale_h:.2f}", (10, 130), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+            scale_w = ew / img.shape[1]
+            scale_h = eh / img.shape[0]
 
-                roi_gray2 = gray[ey:ey + eh, ex:ex + ew]
-                roi_color2 = img[ey:ey + eh, ex:ex + ew]
-                blur = cv2.GaussianBlur(roi_gray2, (5, 5), 10)
-                erosion = cv2.erode(blur, kernel, iterations=2)
-                ret3, th3 = cv2.threshold(erosion, threshold_value, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-                circles = cv2.HoughCircles(erosion, cv2.HOUGH_GRADIENT, 4, 200, param1=20, param2=150, minRadius=0,
-                                           maxRadius=0)
-                try:
-                    for i in circles[0, :]:
-                        if (i[2] > 0 and i[2] < 55):
-                            cv2.circle(roi_color2, (i[0], i[1]), i[2], (0, 0, 255), 1)
-                            cv2.putText(img, "Pupil Pos:", (450, 30), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
-                            cv2.putText(img, "X " + str(int(i[0])) + " Y " + str(int(i[1])), (430, 60), font, 1,
-                                        (0, 0, 255), 2, cv2.LINE_AA)
-                            d = (i[2] / 2.0)
-                            dmm = 1 / (25.4 / d)
-                            diameter.append(dmm)
-                            cv2.putText(img, str('{0:.2f}'.format(dmm)) + "mm", (10, 60), font, 1, (0, 0, 255), 2,
-                                        cv2.LINE_AA)
-                            cv2.circle(roi_color2, (i[0], i[1]), 2, (0, 0, 255), 3)
-                            # cv2.imshow('erosion',erosion)
-                except Exception as e:
-                    pass
+            cv2.putText(img, f"Scale (W): {scale_w:.2f}", (10, 100), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+            cv2.putText(img, f"Scale (H): {scale_h:.2f}", (10, 130), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+
+            self.verify_pupil(img, gray, ey, eh, ex, ew)
+
+    def verify_eye_scale(self, img, eyes):
+        scale_h = eyes[0, 3] / img.shape[0]
+        scale_w = eyes[0, 2] / img.shape[1]
+
+        if scale_h > 0.5 and scale_w > 0.4:
+            self.verified_frame += 1
+            print("VERIFIED", self.verified_frame)
         else:
-            if blink == False:
-                blink = True
-                if blink == True:
-                    cv2.putText(img, "Blink", (10, 90), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
-            a = "Eye Close"
-            cv2.putText(img, a, (10, 30), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+            self.verified_frame = 0
 
-        print(scale_h, scale_w)
-        if (scale_h > 0.5 and scale_w > 0.4):
-            verified_frame += 1
-            print("VERIFIED", verified_frame)
-        else:
-            verified_frame = 0
+    def handle_eye_closed(self, img):
+        if not self.blink:
+            self.blink = True
+            cv2.putText(img, "Blink", (10, 90), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+        a = "Eye Close"
+        cv2.putText(img, a, (10, 30), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
-        if (verified_frame >= 50):
-            print("VERIFIED")
-            verified_frame = 0
-            break
+    def verify_pupil(self, img, gray, ey, eh, ex, ew):
+        roi_gray2 = gray[ey:ey + eh, ex:ex + ew]
+        roi_color2 = img[ey:ey + eh, ex:ex + ew]
+        blur = cv2.GaussianBlur(roi_gray2, (5, 5), 10)
+        erosion = cv2.erode(blur, self.kernel, iterations=2)
+        ret3, th3 = cv2.threshold(erosion, self.threshold_value, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        circles = cv2.HoughCircles(erosion, cv2.HOUGH_GRADIENT, 4, 200, param1=20, param2=150, minRadius=0, maxRadius=0)
 
-        cv2.imshow('img', img)
-        k = cv2.waitKey(30) & 0xff
-        if k == 27:
-            break
-        
+        try:
+            for i in circles[0, :]:
+                if 0 < i[2] < 55:
+                    self.draw_pupil_info(img, roi_color2, i)
+        except TypeError:
+            pass
 
-    cap.release()
-    cv2.destroyAllWindows()
-
-except Exception as e:
-    cap.release()
-    cv2.destroyAllWindows()
+    def draw_pupil_info(self, img, roi_color2, i):
+        center = (int(i[0]), int(i[1]))  # Convert center coordinates to integers
+        radius = int(i[2])
+        cv2.circle(roi_color2, center, radius, (0, 0, 255), 1)
+        cv2.putText(img, "Pupil Pos:", (450, 30), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+        cv2.putText(img, "X " + str(center[0]) + " Y " + str(center[1]), (430, 60), self.font, 1, (0, 0, 255), 2,
+                    cv2.LINE_AA)
+        d = (radius / 2.0)
+        dmm = 1 / (25.4 / d)
+        self.diameter.append(dmm)
+        cv2.putText(img, str('{0:.2f}'.format(dmm)) + "mm", (10, 60), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+        cv2.circle(roi_color2, center, 2, (0, 0, 255), 3)
