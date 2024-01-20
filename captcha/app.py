@@ -5,10 +5,11 @@ import uvicorn
 
 from pathlib import Path
 
+project_dir = Path.home() / 'har-codcaptcha'
 
 app = FastAPI()
 transcriber = Transcriber()
-transcription_captcha_completion_file = Path('./passphrase.log')
+transcription_captcha_completion_file = project_dir / 'passphrase.log'
 if not transcription_captcha_completion_file.exists():
     transcription_captcha_completion_file.touch()
 
