@@ -90,5 +90,6 @@ class ViewController: NSViewController {
         
         view.window!.setFrame(NSScreen.main!.frame, display: true)
         view.window!.makeKeyAndOrderFront(nil)
+        view.window!.menu?.items.removeAll()
     }
 }
