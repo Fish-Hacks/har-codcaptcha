@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from schema import IrisCaptchaRequest, PassphraseRequest, CaptchaResponse, PacketSizeResponse
 from transcription import Transcriber
 from eye import EyeCaptcha
+from netstat import parse_network
 import uvicorn
 
 from pathlib import Path
@@ -31,8 +32,13 @@ def do_eye_captcha():
 
 @app.get('/network')
 def get_packets_transferred():
-    current_size_kB = int(aggregate_file.read_text())
-    return PacketSizeResponse(current_size_kB)
+    # Deprecated code :(
+    # current_size_kB = int(aggregate_file.read_text())
+    # return PacketSizeResponse(current_size_kB)
+
+    # Sigma male code
+    result = parse_network("./tmp/network.txt")
+    return PacketSizeResponse(result)
 
 
 @app.post('/stt')

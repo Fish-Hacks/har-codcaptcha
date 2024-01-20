@@ -127,7 +127,3 @@ class EyeCaptcha:
         self.diameter.append(dmm)
         cv2.putText(img, str('{0:.2f}'.format(dmm)) + "mm", (10, 60), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
         cv2.circle(roi_color2, center, 2, (0, 0, 255), 3)
-
-
-eye = EyeCaptcha()
-eye.detect()
