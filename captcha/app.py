@@ -25,7 +25,7 @@ def health():
 
 @app.get('/eye')
 def do_eye_captcha():
-    eye.detect_and_verify()
+    eye.detect()
     return CaptchaResponse(eye.succeeded)
 
 
