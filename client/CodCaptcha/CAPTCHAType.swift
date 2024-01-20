@@ -17,4 +17,14 @@ enum CAPTCHAType: CaseIterable {
     static func random() -> Self {
         Self.allCases.randomElement()!
     }
+    
+    var description: String {
+        switch self {
+        case .selectPhoto: "Select Photo"
+        case .iris: "Iris"
+        case .scissorsPaperStone: "Scissors Paper Stone"
+        case .speech: "Speech"
+        case .waldo: "Waldo"
+        }
+    }
 }

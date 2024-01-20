@@ -26,17 +26,14 @@ struct TakeOverView: View {
     
     var destroySelf: (() -> Void)
     
+    @State private var isDeveloperMenuPresented = false
+    
     var body: some View {
         ZStack {
             if showBackgroundBlur {
                 Rectangle()
                     .fill(.ultraThinMaterial)
             }
-            
-            Button("kill") {
-                NSApplication.shared.terminate(nil)
-            }
-            .frame(maxHeight: .infinity, alignment: .bottom)
             
             switch validationManager.validationState {
             case .unverified:
@@ -173,6 +170,68 @@ struct TakeOverView: View {
                 .frame(width: 300, height: 400, alignment: .topLeading)
                 .opacity(showFinishSheet ? 1 : 0)
             }
+            
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    Text("\(Image(systemName: "hammer.fill")) Developer Menu")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 8)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            isDeveloperMenuPresented = false
+                        }
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+                
+                Divider()
+                    .padding(.vertical)
+                
+                Text("Switch CAPTCHA")
+                    .font(.title3)
+                    .multilineTextAlignment(.center)
+                
+                ForEach(CAPTCHAType.allCases, id: \.hashValue) { value in
+                    Button {
+                        withAnimation {
+                            isDeveloperMenuPresented = false
+                            validationManager.currentCaptcha = value
+                        }
+                    } label: {
+                        Text(value.description)
+                    }
+                }
+                
+                Text("Quit App")
+                    .font(.title3)
+                    .multilineTextAlignment(.center)
+                
+                Button("Quit Now") {
+                    NSApplication.shared.terminate(nil)
+                }
+            }
+            .padding()
+            .frame(width: 400, alignment: .topLeading)
+            .background(.background)
+            .clipShape(.rect(cornerRadius: 16))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.black.opacity(0.3))
+            .opacity(isDeveloperMenuPresented ? 1 : 0)
+            .allowsHitTesting(isDeveloperMenuPresented)
+            
+            Button {
+                withAnimation {
+                    isDeveloperMenuPresented = true
+                }
+            } label: {
+                Image(systemName: "hammer.fill")
+            }
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .keyboardShortcut(KeyEquivalent("d"), modifiers: .command)
         }
         .onAppear {
             withAnimation {
