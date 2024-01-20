@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class CAPTCHAValidationManager: ObservableObject {
     @Published var numberOfKilobytes: Int = 0
@@ -22,10 +23,14 @@ class CAPTCHAValidationManager: ObservableObject {
         self.numberOfKilobytes = numberOfKilobytes
     }
     
-    func loadNextCaptcha() {
-        currentCaptcha = .random()
-        
-        currentChallengeIndex += 1
+    func loadNextCaptcha(didSucceed: Bool) {
+        withAnimation {
+            currentCaptcha = .random()
+//            captchaContent =
+            
+            if didSucceed {
+                currentChallengeIndex += 1
+            }
+        }
     }
-    
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		325DC82C2B5BC9A400E35FA2 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 325DC82B2B5BC9A400E35FA2 /* images */; };
 		329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */; };
 		329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */; };
 		329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		325DC82B2B5BC9A400E35FA2 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../images; sourceTree = "<group>"; };
 		329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOverView.swift; sourceTree = "<group>"; };
 		329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAType.swift; sourceTree = "<group>"; };
 		329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAValidationManager.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */,
 				329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */,
 				329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */,
+				325DC82B2B5BC9A400E35FA2 /* images */,
 				329CF60E2B5BBA940043FC18 /* Captcha Rendering Data */,
 				32C53ACF2B5B7A09004DED18 /* Assets.xcassets */,
 				32C53AD12B5B7A09004DED18 /* Main.storyboard */,
@@ -145,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				325DC82C2B5BC9A400E35FA2 /* images in Resources */,
 				32C53AD02B5B7A09004DED18 /* Assets.xcassets in Resources */,
 				32C53AD32B5B7A09004DED18 /* Main.storyboard in Resources */,
 			);

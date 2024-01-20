@@ -18,7 +18,9 @@ struct CaptchaRendererView: View {
         } else {
             switch validationManager.captchaContent! {
             case .selectPhoto:
-                SelectPhotoView()
+                SelectPhotoView { didSucceed in
+                    validationManager.loadNextCaptcha(didSucceed: didSucceed)
+                }
             case .iris:
                 EmptyView()
             case .scissorsPaperStone:

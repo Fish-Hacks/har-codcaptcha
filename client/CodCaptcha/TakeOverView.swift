@@ -46,12 +46,14 @@ struct TakeOverView: View {
                         Divider()
                             .padding(.vertical)
                         
-                        Text("\(validationManager.currentChallengeIndex + 1) of \(validationManager.numberOfKilobytes)")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        
                         CaptchaRendererView()
                             .environmentObject(validationManager)
                         
+                        Text("\(validationManager.currentChallengeIndex + 1) of \(validationManager.numberOfKilobytes)")
+                            .contentTransition(.numericText())
+                            .monospacedDigit()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.top)
                     }
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -69,7 +71,7 @@ struct TakeOverView: View {
                 
             }
             .aspectRatio(1, contentMode: .fit)
-            .frame(width: 600, height: 600)
+            .frame(width: 700, height: 700)
         }
         .onAppear {
             withAnimation {

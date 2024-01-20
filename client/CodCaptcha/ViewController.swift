@@ -55,7 +55,7 @@ class ViewController: NSViewController {
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
         
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
             self.createPopover()
         }
     }
