@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3254673F2B5BE116006450AB /* IrisScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3254673E2B5BE116006450AB /* IrisScanningView.swift */; };
 		325DC82C2B5BC9A400E35FA2 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 325DC82B2B5BC9A400E35FA2 /* images */; };
+		32613F402B5BEFA300155437 /* RPS.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 32613F3F2B5BEFA300155437 /* RPS.mlmodel */; };
+		32613F422B5BF01300155437 /* ScissorsPaperStoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */; };
+		32613F442B5BF01F00155437 /* HandGestureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F432B5BF01F00155437 /* HandGestureViewModel.swift */; };
 		329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */; };
 		329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */; };
 		329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */; };
@@ -23,6 +26,9 @@
 /* Begin PBXFileReference section */
 		3254673E2B5BE116006450AB /* IrisScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisScanningView.swift; sourceTree = "<group>"; };
 		325DC82B2B5BC9A400E35FA2 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../images; sourceTree = "<group>"; };
+		32613F3F2B5BEFA300155437 /* RPS.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RPS.mlmodel; sourceTree = "<group>"; };
+		32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScissorsPaperStoneView.swift; sourceTree = "<group>"; };
+		32613F432B5BF01F00155437 /* HandGestureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureViewModel.swift; sourceTree = "<group>"; };
 		329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOverView.swift; sourceTree = "<group>"; };
 		329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAType.swift; sourceTree = "<group>"; };
 		329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAValidationManager.swift; sourceTree = "<group>"; };
@@ -70,10 +76,13 @@
 				32C53ACD2B5B7A08004DED18 /* ViewController.swift */,
 				329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */,
 				329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */,
+				32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */,
+				32613F432B5BF01F00155437 /* HandGestureViewModel.swift */,
 				3254673E2B5BE116006450AB /* IrisScanningView.swift */,
 				329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */,
 				329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */,
 				329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */,
+				32613F3F2B5BEFA300155437 /* RPS.mlmodel */,
 				325DC82B2B5BC9A400E35FA2 /* images */,
 				32C53ACF2B5B7A09004DED18 /* Assets.xcassets */,
 				32C53AD12B5B7A09004DED18 /* Main.storyboard */,
@@ -155,11 +164,14 @@
 			files = (
 				32C53ACE2B5B7A08004DED18 /* ViewController.swift in Sources */,
 				329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */,
+				32613F402B5BEFA300155437 /* RPS.mlmodel in Sources */,
 				329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */,
+				32613F422B5BF01300155437 /* ScissorsPaperStoneView.swift in Sources */,
 				329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */,
 				3254673F2B5BE116006450AB /* IrisScanningView.swift in Sources */,
 				32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */,
 				329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */,
+				32613F442B5BF01F00155437 /* HandGestureViewModel.swift in Sources */,
 				329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,9 +318,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Destroy all";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scissors Paper Stone pls";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -335,9 +350,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Destroy all";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scissors Paper Stone pls";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

@@ -22,8 +22,9 @@ struct CaptchaRendererView: View {
                 validationManager.loadNextCaptcha(didSucceed: true)
             }
         case .scissorsPaperStone:
-            Text("SPS")
-            Spacer()
+            ScissorsPaperStoneView { didSucceed in
+                validationManager.loadNextCaptcha(didSucceed: didSucceed)
+            }
         case .speech:
             Text("Speech")
             Spacer()
