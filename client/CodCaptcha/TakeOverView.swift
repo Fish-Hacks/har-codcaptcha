@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct TakeOverView: View {
     
@@ -16,6 +17,8 @@ struct TakeOverView: View {
     
     @State private var fishOffsetX = 1000.0
     @State private var fishOffsetY = 500.0
+    
+    @StateObject private var sound = SubsonicPlayer(sound: "horrifyingmusic.mov")
     
     @Namespace var namespace
     
@@ -171,10 +174,16 @@ struct TakeOverView: View {
                 fishOffsetX = 0
                 fishOffsetY = 0
             }
+            sound.volume = 1000
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     showBackgroundBlur = true
                 }
+            }
+        }
+        .onChange(of: validationManager.failedAttempts) { newValue in
+            if newValue == 2 {
+                sound.play()
             }
         }
     }

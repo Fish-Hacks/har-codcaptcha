@@ -10,6 +10,8 @@ import SwiftUI
 
 class CAPTCHAValidationManager: ObservableObject {
     
+    @Published var failedAttempts: Int = 0
+    
     @Published var numberOfKilobytes: Int = 0
     var challengeCount: Int {
         numberOfKilobytes / 10
@@ -39,6 +41,8 @@ class CAPTCHAValidationManager: ObservableObject {
                 
                 if didSucceed {
                     currentChallengeIndex += 1
+                } else {
+                    failedAttempts += 1
                 }
             }
         } else if didSucceed {

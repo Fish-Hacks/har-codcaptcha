@@ -12,6 +12,8 @@
 		32613F402B5BEFA300155437 /* RPS.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 32613F3F2B5BEFA300155437 /* RPS.mlmodel */; };
 		32613F422B5BF01300155437 /* ScissorsPaperStoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */; };
 		32613F442B5BF01F00155437 /* HandGestureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F432B5BF01F00155437 /* HandGestureViewModel.swift */; };
+		32613F462B5C0BC100155437 /* horrifyingmusic.mov in Resources */ = {isa = PBXBuildFile; fileRef = 32613F452B5C0BC100155437 /* horrifyingmusic.mov */; };
+		32613F492B5C0BED00155437 /* Subsonic in Frameworks */ = {isa = PBXBuildFile; productRef = 32613F482B5C0BED00155437 /* Subsonic */; };
 		329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */; };
 		329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */; };
 		329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */; };
@@ -29,6 +31,7 @@
 		32613F3F2B5BEFA300155437 /* RPS.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RPS.mlmodel; sourceTree = "<group>"; };
 		32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScissorsPaperStoneView.swift; sourceTree = "<group>"; };
 		32613F432B5BF01F00155437 /* HandGestureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureViewModel.swift; sourceTree = "<group>"; };
+		32613F452B5C0BC100155437 /* horrifyingmusic.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = horrifyingmusic.mov; sourceTree = "<group>"; };
 		329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOverView.swift; sourceTree = "<group>"; };
 		329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAType.swift; sourceTree = "<group>"; };
 		329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAValidationManager.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32613F492B5C0BED00155437 /* Subsonic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +86,7 @@
 				329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */,
 				329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */,
 				329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */,
+				32613F452B5C0BC100155437 /* horrifyingmusic.mov */,
 				32613F3F2B5BEFA300155437 /* RPS.mlmodel */,
 				325DC82B2B5BC9A400E35FA2 /* images */,
 				32C53ACF2B5B7A09004DED18 /* Assets.xcassets */,
@@ -107,6 +112,9 @@
 			dependencies = (
 			);
 			name = CodCaptcha;
+			packageProductDependencies = (
+				32613F482B5C0BED00155437 /* Subsonic */,
+			);
 			productName = CodCaptcha;
 			productReference = 32C53AC82B5B7A08004DED18 /* CodCaptcha.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 32C53ABF2B5B7A07004DED18;
+			packageReferences = (
+				32613F472B5C0BED00155437 /* XCRemoteSwiftPackageReference "Subsonic" */,
+			);
 			productRefGroup = 32C53AC92B5B7A08004DED18 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -149,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32613F462B5C0BC100155437 /* horrifyingmusic.mov in Resources */,
 				325DC82C2B5BC9A400E35FA2 /* images in Resources */,
 				32C53AD02B5B7A09004DED18 /* Assets.xcassets in Resources */,
 				32C53AD32B5B7A09004DED18 /* Main.storyboard in Resources */,
@@ -394,6 +406,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32613F472B5C0BED00155437 /* XCRemoteSwiftPackageReference "Subsonic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Subsonic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32613F482B5C0BED00155437 /* Subsonic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32613F472B5C0BED00155437 /* XCRemoteSwiftPackageReference "Subsonic" */;
+			productName = Subsonic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32C53AC02B5B7A07004DED18 /* Project object */;
 }
