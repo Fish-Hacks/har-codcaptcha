@@ -18,6 +18,8 @@ struct TakeOverView: View {
     @State private var fishOffsetX = 1000.0
     @State private var fishOffsetY = 500.0
     
+    @State private var showFinishSheet = true
+    
     @StateObject private var sound = SubsonicPlayer(sound: "horrifyingmusic.mov")
     
     @Namespace var namespace
@@ -91,7 +93,7 @@ struct TakeOverView: View {
                             Text("**`\(validationManager.numberOfKilobytes) KB`** sent and received")
                                 .font(.title3)
                             
-                            Text("For every megabyte of data sent or received, you will have to solve a CAPTCHA.")
+                            Text("For every 10 megabytes of data sent or received, you will have to solve a CAPTCHA.")
                                 .font(.body)
                             
                             Divider()
@@ -158,12 +160,18 @@ struct TakeOverView: View {
                         Spacer()
                         
                         Button("Done") {
-                            destroySelf()
+                            withAnimation(.easeInOut(duration: 1)) {
+                                showFinishSheet.toggle()
+                            }
+                            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                                destroySelf()
+                            }
                         }
+                        .padding()
                     }
-                    .padding()
                 }
                 .frame(width: 300, height: 400, alignment: .topLeading)
+                .opacity(showFinishSheet ? 1 : 0)
             }
         }
         .onAppear {
