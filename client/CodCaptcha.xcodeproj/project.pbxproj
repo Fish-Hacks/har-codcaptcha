@@ -7,7 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3254673F2B5BE116006450AB /* IrisScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3254673E2B5BE116006450AB /* IrisScanningView.swift */; };
+		325DC82C2B5BC9A400E35FA2 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 325DC82B2B5BC9A400E35FA2 /* images */; };
+		32613F402B5BEFA300155437 /* RPS.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 32613F3F2B5BEFA300155437 /* RPS.mlmodel */; };
+		32613F422B5BF01300155437 /* ScissorsPaperStoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */; };
+		32613F442B5BF01F00155437 /* HandGestureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F432B5BF01F00155437 /* HandGestureViewModel.swift */; };
+		32613F462B5C0BC100155437 /* horrifyingmusic.mov in Resources */ = {isa = PBXBuildFile; fileRef = 32613F452B5C0BC100155437 /* horrifyingmusic.mov */; };
+		32613F492B5C0BED00155437 /* Subsonic in Frameworks */ = {isa = PBXBuildFile; productRef = 32613F482B5C0BED00155437 /* Subsonic */; };
 		329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */; };
+		329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */; };
+		329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */; };
+		329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */; };
+		329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */; };
 		32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C53ACB2B5B7A08004DED18 /* AppDelegate.swift */; };
 		32C53ACE2B5B7A08004DED18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C53ACD2B5B7A08004DED18 /* ViewController.swift */; };
 		32C53AD02B5B7A09004DED18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C53ACF2B5B7A09004DED18 /* Assets.xcassets */; };
@@ -15,7 +26,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3254673E2B5BE116006450AB /* IrisScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisScanningView.swift; sourceTree = "<group>"; };
+		325DC82B2B5BC9A400E35FA2 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../images; sourceTree = "<group>"; };
+		32613F3F2B5BEFA300155437 /* RPS.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RPS.mlmodel; sourceTree = "<group>"; };
+		32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScissorsPaperStoneView.swift; sourceTree = "<group>"; };
+		32613F432B5BF01F00155437 /* HandGestureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureViewModel.swift; sourceTree = "<group>"; };
+		32613F452B5C0BC100155437 /* horrifyingmusic.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = horrifyingmusic.mov; sourceTree = "<group>"; };
 		329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOverView.swift; sourceTree = "<group>"; };
+		329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAType.swift; sourceTree = "<group>"; };
+		329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAValidationManager.swift; sourceTree = "<group>"; };
+		329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaRendererView.swift; sourceTree = "<group>"; };
+		329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoView.swift; sourceTree = "<group>"; };
 		32C53AC82B5B7A08004DED18 /* CodCaptcha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodCaptcha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C53ACB2B5B7A08004DED18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C53ACD2B5B7A08004DED18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32613F492B5C0BED00155437 /* Subsonic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +79,16 @@
 				32C53ACB2B5B7A08004DED18 /* AppDelegate.swift */,
 				32C53ACD2B5B7A08004DED18 /* ViewController.swift */,
 				329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */,
+				329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */,
+				32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */,
+				32613F432B5BF01F00155437 /* HandGestureViewModel.swift */,
+				3254673E2B5BE116006450AB /* IrisScanningView.swift */,
+				329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */,
+				329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */,
+				329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */,
+				32613F452B5C0BC100155437 /* horrifyingmusic.mov */,
+				32613F3F2B5BEFA300155437 /* RPS.mlmodel */,
+				325DC82B2B5BC9A400E35FA2 /* images */,
 				32C53ACF2B5B7A09004DED18 /* Assets.xcassets */,
 				32C53AD12B5B7A09004DED18 /* Main.storyboard */,
 				32C53AD42B5B7A09004DED18 /* CodCaptcha.entitlements */,
@@ -80,6 +112,9 @@
 			dependencies = (
 			);
 			name = CodCaptcha;
+			packageProductDependencies = (
+				32613F482B5C0BED00155437 /* Subsonic */,
+			);
 			productName = CodCaptcha;
 			productReference = 32C53AC82B5B7A08004DED18 /* CodCaptcha.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 32C53ABF2B5B7A07004DED18;
+			packageReferences = (
+				32613F472B5C0BED00155437 /* XCRemoteSwiftPackageReference "Subsonic" */,
+			);
 			productRefGroup = 32C53AC92B5B7A08004DED18 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -122,6 +160,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32613F462B5C0BC100155437 /* horrifyingmusic.mov in Resources */,
+				325DC82C2B5BC9A400E35FA2 /* images in Resources */,
 				32C53AD02B5B7A09004DED18 /* Assets.xcassets in Resources */,
 				32C53AD32B5B7A09004DED18 /* Main.storyboard in Resources */,
 			);
@@ -135,7 +175,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				32C53ACE2B5B7A08004DED18 /* ViewController.swift in Sources */,
+				329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */,
+				32613F402B5BEFA300155437 /* RPS.mlmodel in Sources */,
+				329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */,
+				32613F422B5BF01300155437 /* ScissorsPaperStoneView.swift in Sources */,
+				329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */,
+				3254673F2B5BE116006450AB /* IrisScanningView.swift in Sources */,
 				32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */,
+				329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */,
+				32613F442B5BF01F00155437 /* HandGestureViewModel.swift in Sources */,
 				329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,8 +330,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Destroy all";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scissors Paper Stone pls";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -291,6 +343,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.jiachen.CodCaptcha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -309,8 +362,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Destroy all";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scissors Paper Stone pls";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -318,6 +375,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.jiachen.CodCaptcha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +406,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32613F472B5C0BED00155437 /* XCRemoteSwiftPackageReference "Subsonic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Subsonic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32613F482B5C0BED00155437 /* Subsonic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32613F472B5C0BED00155437 /* XCRemoteSwiftPackageReference "Subsonic" */;
+			productName = Subsonic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32C53AC02B5B7A07004DED18 /* Project object */;
 }
