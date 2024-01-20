@@ -38,16 +38,17 @@ class ViewController: NSViewController {
         do {
             let (data, response) = try await session.data(for: request)
             
-            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Int],
-                  let size = jsonObject["size"] else { return }
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Double],
+                  let sizeInKB = jsonObject["size"] else { return }
             
-            if size >= 10 {
+            if sizeInKB >= 1024 {
                 await MainActor.run {
                     if self.popover == nil {
-                        self.createPopover()
+                        self.createPopover(with: sizeInKB)
                     }
                 }
             }
+            
         } catch {
             print(error.localizedDescription)
         }
@@ -92,9 +93,9 @@ class ViewController: NSViewController {
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
         
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
-            self.createPopover()
-        }
+//        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+//            self.createPopover(with: 2000)
+//        }
     }
     
     override func viewDidLayout() {
@@ -102,8 +103,8 @@ class ViewController: NSViewController {
         
     }
     
-    func createPopover() {
-        let controller = NSHostingController(rootView: TakeOverView {
+    func createPopover(with size: Int) {
+        let controller = NSHostingController(rootView: TakeOverView(size: size) {
             self.view.window!.setFrame(.zero, display: true)
             self.popover?.removeFromSuperview()
             self.popover = nil

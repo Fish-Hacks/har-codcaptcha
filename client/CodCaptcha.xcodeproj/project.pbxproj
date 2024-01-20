@@ -20,6 +20,7 @@
 		329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */; };
 		329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */; };
 		329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */; };
+		32B29D6C2B5C4C66009D984D /* SpeechToTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B29D6B2B5C4C66009D984D /* SpeechToTextView.swift */; };
 		32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C53ACB2B5B7A08004DED18 /* AppDelegate.swift */; };
 		32C53ACE2B5B7A08004DED18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C53ACD2B5B7A08004DED18 /* ViewController.swift */; };
 		32C53AD02B5B7A09004DED18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C53ACF2B5B7A09004DED18 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAValidationManager.swift; sourceTree = "<group>"; };
 		329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaRendererView.swift; sourceTree = "<group>"; };
 		329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoView.swift; sourceTree = "<group>"; };
+		32B29D6B2B5C4C66009D984D /* SpeechToTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToTextView.swift; sourceTree = "<group>"; };
 		32C53AC82B5B7A08004DED18 /* CodCaptcha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodCaptcha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C53ACB2B5B7A08004DED18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C53ACD2B5B7A08004DED18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				32C53ACD2B5B7A08004DED18 /* ViewController.swift */,
 				329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */,
 				329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */,
+				32B29D6B2B5C4C66009D984D /* SpeechToTextView.swift */,
 				32613F4A2B5C223500155437 /* WaldoView.swift */,
 				32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */,
 				32613F432B5BF01F00155437 /* HandGestureViewModel.swift */,
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32C53ACE2B5B7A08004DED18 /* ViewController.swift in Sources */,
+				32B29D6C2B5C4C66009D984D /* SpeechToTextView.swift in Sources */,
 				329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */,
 				32613F402B5BEFA300155437 /* RPS.mlmodel in Sources */,
 				329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */,

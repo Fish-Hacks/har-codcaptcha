@@ -14,7 +14,7 @@ class CAPTCHAValidationManager: ObservableObject {
     
     @Published var numberOfKilobytes: Int = 0
     var challengeCount: Int {
-        numberOfKilobytes / 10
+        numberOfKilobytes / 1024
     }
     @Published var currentChallengeIndex: Int = 0
     
