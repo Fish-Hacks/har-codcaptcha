@@ -10,17 +10,54 @@ import SwiftUI
 
 class ViewController: NSViewController {
 
-    var popover: NSView!
+    var popover: NSView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { timer in
+            if self.popover == nil {
+                Task {
+                    await self.poll()
+                }
+            }
+        }
+    }
+    
+    func poll() async {
+        let configuration = URLSessionConfiguration.default
+        
+        let session = URLSession(configuration: configuration)
+        
+        let url = URL(string: "http://127.0.0.1:5000/network")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        do {
+            let (data, response) = try await session.data(for: request)
+            
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Int],
+                  let size = jsonObject["size"] else { return }
+            
+            if size >= 10 {
+                await MainActor.run {
+                    if self.popover == nil {
+                        self.createPopover()
+                    }
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        print(Date.now)
     }
 
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
 
@@ -68,7 +105,8 @@ class ViewController: NSViewController {
     func createPopover() {
         let controller = NSHostingController(rootView: TakeOverView {
             self.view.window!.setFrame(.zero, display: true)
-            self.view.subviews.first?.removeFromSuperview()
+            self.popover?.removeFromSuperview()
+            self.popover = nil
         })
         
         controller.preferredContentSize = NSScreen.main!.frame.size
@@ -86,7 +124,7 @@ class ViewController: NSViewController {
         
         popover = newView
         
-        view.addSubview(popover)
+        view.addSubview(popover!)
         
         view.window!.setFrame(NSScreen.main!.frame, display: true)
         view.window!.makeKeyAndOrderFront(nil)
