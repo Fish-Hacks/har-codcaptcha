@@ -1,5 +1,3 @@
-#! python3.9.18
-
 import numpy as np
 from time import time
 from typing import Optional
@@ -19,8 +17,8 @@ class Transcriber:
     phrase_time: Optional[int] = None
     data_queue: Queue = field(default_factory=Queue)
     recorder: Recognizer = field(default_factory=Recognizer)
-    source: Microphone = field(default_factory=Microphone)
-    model: Whisper = field(default_factory=lambda _: load_model('medium.en'))
+    source: Microphone = field(default_factory=lambda: Microphone(sample_rate=16000))
+    model: Whisper = field(default_factory=lambda: load_model('medium.en'))
 
     # Configs for recorder
     energy_threshold: int = 1000
@@ -30,7 +28,7 @@ class Transcriber:
     phrase_timeout: int = 3
     timeout: int = 120
 
-    transcription: list[str] = field(default_factory=list)
+    transcription: list[str] = field(default_factory=lambda:[''])
 
     def __post_init__(self):
         self.recorder.energy_threshold = self.energy_threshold
@@ -84,10 +82,10 @@ class Transcriber:
                 phrase_complete = False
                 # If enough time has passed between recordings, consider the phrase complete.
                 # Clear the current working audio buffer to start over with the new data.
-                if phrase_time and now - phrase_time > timedelta(seconds=self.phrase_timeout):
+                if self.phrase_time and now - self.phrase_time > timedelta(seconds=self.phrase_timeout):
                     phrase_complete = True
                 # This is the last time we received new audio data from the queue.
-                phrase_time = now
+                self.phrase_time = now
 
                 # Combine audio data from queue
                 audio_data = b''.join(self.data_queue.queue)
@@ -99,7 +97,7 @@ class Transcriber:
                 audio_np = np.frombuffer(audio_data, dtype=np.int16).astype(np.float32) / 32768.0
 
                 # Read the transcription.
-                result = self.model.transcribe(audio_np, fp16=torch.backends.mps.is_available())
+                result = self.model.transcribe(audio_np, fp16=torch.cuda.is_available())
                 text = result['text'].strip().lower()
 
                 # If the passphrase is spoken end transcription
@@ -113,3 +111,14 @@ class Transcriber:
                 break
 
         return time_elapsed < self.timeout
+
+
+if __name__ == "__main__":
+    start = time()
+    transcriber = Transcriber()
+    end = time()
+    print(f'Took {end-start}s to setup transcriber')
+    start = time()
+    is_complete = transcriber.transcribe('please stop')
+    end = time()
+    print(f"Transcription Captcha{'' if is_complete else ' not'} completed in {end - start}s")

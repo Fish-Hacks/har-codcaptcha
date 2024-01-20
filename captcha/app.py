@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from schema import IrisCaptchaRequest, PassphraseRequest, CaptchaResponse, PacketSizeResponse
 from transcription import Transcriber
+from eye import EyeCaptcha
 import uvicorn
 
 from pathlib import Path
@@ -9,6 +10,7 @@ project_dir = Path.home() / 'har-codcaptcha'
 
 app = FastAPI()
 transcriber = Transcriber()
+eye = EyeCaptcha()
 aggregate_file = project_dir / 'packet_aggregate.log'
 
 if not aggregate_file.exists():
@@ -21,9 +23,10 @@ def health():
     return 'Hello world'
 
 
-@app.post('/iris')
-def do_iris_captcha(req: IrisCaptchaRequest):
-    return
+@app.get('/eye')
+def do_eye_captcha():
+    eye.detect_and_verify()
+    return CaptchaResponse(eye.succeeded)
 
 
 @app.get('/network')

@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from dataclasses import dataclass
 
 class IrisCaptchaRequest(BaseModel):
     ...
@@ -9,9 +9,11 @@ class PassphraseRequest(BaseModel):
     text: str
 
 
-class CaptchaResponse(BaseModel):
+@dataclass
+class CaptchaResponse:
     succeeded: bool
 
 
-class PacketSizeResponse(BaseModel):
+@dataclass
+class PacketSizeResponse:
     size: int
