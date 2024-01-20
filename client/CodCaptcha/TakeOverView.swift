@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TakeOverView: View {
     
+    @StateObject var validationManager = CAPTCHAValidationManager()
+    
     @State private var showBackgroundBlur = false
     @State private var showPopupSheet = false
     
@@ -33,6 +35,10 @@ struct TakeOverView: View {
                         Text("Are you a robot?")
                             .font(.largeTitle)
                             .fontWeight(.bold)
+                            .padding(.bottom, 8)
+                        
+                        Text("**`\(validationManager.numberOfKilobytes) KB`** sent and received")
+                            .font(.title3)
                         
                         Text("For every megabyte of data sent or received, you will have to solve a CAPTCHA.")
                             .font(.body)
@@ -40,7 +46,11 @@ struct TakeOverView: View {
                         Divider()
                             .padding(.vertical)
                         
-                        Text("1 of 30")
+                        Text("\(validationManager.currentChallengeIndex + 1) of \(validationManager.numberOfKilobytes)")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        
+                        CaptchaRendererView()
+                            .environmentObject(validationManager)
                         
                     }
                     .padding()
@@ -68,7 +78,8 @@ struct TakeOverView: View {
             withAnimation(.easeOut(duration: 1)) {
                 fishOffsetX = 100
                 fishOffsetY = 0
-            } completion: {
+            }
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     showBackgroundBlur = true
                 }

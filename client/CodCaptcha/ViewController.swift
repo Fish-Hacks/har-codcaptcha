@@ -86,5 +86,6 @@ class ViewController: NSViewController {
         view.addSubview(popover)
         
         view.window!.setFrame(NSScreen.main!.frame, display: true)
+        view.window!.makeKeyAndOrderFront(nil)
     }
 }
