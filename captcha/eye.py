@@ -3,7 +3,7 @@ import cv2
 
 class EyeCaptcha:
     def __init__(self):
-        self.eye_cascade = cv2.CascadeClassifier(r'C:\Users\Addison\Desktop\har-codcaptcha\captcha\haarcascade_eye.xml')
+        self.eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
         self.cap = cv2.VideoCapture(0)
         self.diameter = []
         self.blink = False
@@ -30,7 +30,6 @@ class EyeCaptcha:
                     self.handle_eye_closed(img)
 
                 if self.verified_frame >= 50:
-                    print("VERIFIED")
                     self.verified_frame = 0
                     self.succeeded = True
                     break
@@ -68,7 +67,7 @@ class EyeCaptcha:
 
         if scale_h > 0.5 and scale_w > 0.4:
             self.verified_frame += 1
-            print("VERIFIED", self.verified_frame)
+            # print("VERIFIED", self.verified_frame)
         else:
             self.verified_frame = 0
 
