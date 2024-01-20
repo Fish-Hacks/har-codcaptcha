@@ -14,6 +14,7 @@
 		32613F442B5BF01F00155437 /* HandGestureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F432B5BF01F00155437 /* HandGestureViewModel.swift */; };
 		32613F462B5C0BC100155437 /* horrifyingmusic.mov in Resources */ = {isa = PBXBuildFile; fileRef = 32613F452B5C0BC100155437 /* horrifyingmusic.mov */; };
 		32613F492B5C0BED00155437 /* Subsonic in Frameworks */ = {isa = PBXBuildFile; productRef = 32613F482B5C0BED00155437 /* Subsonic */; };
+		32613F4B2B5C223500155437 /* WaldoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613F4A2B5C223500155437 /* WaldoView.swift */; };
 		329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */; };
 		329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */; };
 		329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */; };
@@ -32,6 +33,7 @@
 		32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScissorsPaperStoneView.swift; sourceTree = "<group>"; };
 		32613F432B5BF01F00155437 /* HandGestureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandGestureViewModel.swift; sourceTree = "<group>"; };
 		32613F452B5C0BC100155437 /* horrifyingmusic.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = horrifyingmusic.mov; sourceTree = "<group>"; };
+		32613F4A2B5C223500155437 /* WaldoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaldoView.swift; sourceTree = "<group>"; };
 		329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOverView.swift; sourceTree = "<group>"; };
 		329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAType.swift; sourceTree = "<group>"; };
 		329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAValidationManager.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				32C53ACD2B5B7A08004DED18 /* ViewController.swift */,
 				329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */,
 				329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */,
+				32613F4A2B5C223500155437 /* WaldoView.swift */,
 				32613F412B5BF01300155437 /* ScissorsPaperStoneView.swift */,
 				32613F432B5BF01F00155437 /* HandGestureViewModel.swift */,
 				3254673E2B5BE116006450AB /* IrisScanningView.swift */,
@@ -182,6 +185,7 @@
 				329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */,
 				3254673F2B5BE116006450AB /* IrisScanningView.swift in Sources */,
 				32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */,
+				32613F4B2B5C223500155437 /* WaldoView.swift in Sources */,
 				329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */,
 				32613F442B5BF01F00155437 /* HandGestureViewModel.swift in Sources */,
 				329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */,

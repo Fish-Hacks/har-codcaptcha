@@ -18,7 +18,7 @@ class CAPTCHAValidationManager: ObservableObject {
     }
     @Published var currentChallengeIndex: Int = 0
     
-    @Published var currentCaptcha: CAPTCHAType = .scissorsPaperStone
+    @Published var currentCaptcha: CAPTCHAType = .selectPhoto
     
     @Published var validationState = ValidationState.unverified
     

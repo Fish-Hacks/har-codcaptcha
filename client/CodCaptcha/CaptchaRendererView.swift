@@ -28,6 +28,10 @@ struct CaptchaRendererView: View {
         case .speech:
             Text("Speech")
             Spacer()
+        case .waldo:
+            WaldoView { didSucceed in
+                validationManager.loadNextCaptcha(didSucceed: didSucceed)
+            }
         }
     }
 }

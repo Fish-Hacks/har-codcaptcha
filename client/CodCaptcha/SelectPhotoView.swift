@@ -19,6 +19,7 @@ struct SelectPhotoView: View {
     @State private var targetSquareCoordinates: [CAPTCHACoordinate]
     
     @State private var displayedImageURLs: [[URL]]
+    @State private var hiddenCoordinate: CAPTCHACoordinate?
     
     init(onCompletion: @escaping ((Bool) -> Void)) {
         let imageDirectory = Bundle.main.url(forResource: "images", withExtension: "")!
@@ -89,21 +90,32 @@ struct SelectPhotoView: View {
                                                url: displayedImageURLs[x][y]) {
                                 guard let index = targetSquareCoordinates.firstIndex(of: coordinate) else { return }
                                 
-                                if [true, false, false].randomElement()! {
-                                    var newImageURL = targetClassImageURLs.randomElement()!
-                                    
-                                    while newImageURL == displayedImageURLs[x][y] {
-                                        newImageURL = targetClassImageURLs.randomElement()!
+                                withAnimation(.linear(duration: 1)) {
+                                    hiddenCoordinate = coordinate
+                                }
+                                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                                    if [true, false, false].randomElement()! {
+                                        var newImageURL = targetClassImageURLs.randomElement()!
+                                        
+                                        while newImageURL == displayedImageURLs[x][y] {
+                                            newImageURL = targetClassImageURLs.randomElement()!
+                                        }
+                                        
+                                        displayedImageURLs[x][y] = targetClassImageURLs.randomElement()!
+                                    } else {
+                                        targetSquareCoordinates.remove(at: index)
+                                        displayedImageURLs[x][y] = decoyClassImageURLs.randomElement()!
                                     }
                                     
-                                    displayedImageURLs[x][y] = targetClassImageURLs.randomElement()!
-                                } else {
-                                    targetSquareCoordinates.remove(at: index)
-                                    displayedImageURLs[x][y] = decoyClassImageURLs.randomElement()!
+                                    withAnimation(.linear(duration: 1)) {
+                                        hiddenCoordinate = nil
+                                    }
                                 }
+                                
                             } onFailure: {
                                 onCompletion(false)
                             }
+                            .opacity(hiddenCoordinate == coordinate ? 0.1 : 1)
                         }
                     }
                 }

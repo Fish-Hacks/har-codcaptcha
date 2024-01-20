@@ -12,6 +12,7 @@ enum CAPTCHAType: CaseIterable {
     case iris
     case scissorsPaperStone
     case speech
+    case waldo
     
     static func random() -> Self {
         Self.allCases.randomElement()!
