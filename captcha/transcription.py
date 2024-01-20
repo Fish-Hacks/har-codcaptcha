@@ -1,6 +1,7 @@
 #! python3.9.18
 
 import numpy as np
+from time import time
 from typing import Optional
 from dataclasses import dataclass, field
 from speech_recognition import Microphone, Recognizer, AudioData
@@ -27,6 +28,7 @@ class Transcriber:
     # Configs for transcription
     record_timeout: int = 2
     phrase_timeout: int = 3
+    timeout: int = 120
 
     transcription: list[str] = field(default_factory=list)
 
@@ -41,7 +43,8 @@ class Transcriber:
         """
         Threaded callback function to receive audio data when recordings finish.
 
-        audio (AudioData): An AudioData containing the recorded bytes.
+        Args:
+            audio (AudioData): An AudioData containing the recorded bytes.
         """
         # Grab the raw bytes and push it into the thread safe queue.
         data = audio.get_raw_data()
@@ -52,7 +55,11 @@ class Transcriber:
         Transcribe function, takes audio from microphone and transcribes
         infinitely in real-time until passphrase is said
 
-        passphrase (str): passphrase that needs to be spoken to end loop
+        Args:
+            passphrase (str): passphrase that needs to be spoken to end loop
+
+        Returns:
+            (bool): boolean indicating if passphrase was spoken within timeout limit
         """
         with self.source:
             self.recorder.adjust_for_ambient_noise(self.source)
@@ -65,8 +72,11 @@ class Transcriber:
             phrase_time_limit=self.record_timeout
         )
 
-        while True:
+        time_elapsed = 0
+
+        while time_elapsed < self.timeout:
             try:
+                start = time()
                 now = datetime.utcnow()
                 # Pull raw recorded audio from the queue.
                 if self.data_queue.empty():
@@ -98,7 +108,8 @@ class Transcriber:
 
                 # Infinite loops are bad for processors, must sleep.
                 sleep(0.25)
+                time_elapsed += (time() - start)
             except KeyboardInterrupt:
                 break
 
-        return True
+        return time_elapsed < self.timeout

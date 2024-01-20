@@ -38,7 +38,7 @@ def get_packets_transferred():
 
 @app.post('/stt')
 def do_passphrase_captcha(req: PassphraseRequest):
-    is_complete = transcriber.transcribe(req.passphrase)
+    is_complete = transcriber.transcribe(req.text)
     transcription_captcha_completion_file.write_text('1' if is_complete else '0')
     return CaptchaResponse(is_complete)
 
