@@ -18,8 +18,9 @@ struct CaptchaRendererView: View {
                 validationManager.loadNextCaptcha(didSucceed: didSucceed)
             }
         case .iris:
-            Text("Iris")
-            Spacer()
+            IrisScanningView {
+                validationManager.loadNextCaptcha(didSucceed: true)
+            }
         case .scissorsPaperStone:
             Text("SPS")
             Spacer()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3254673F2B5BE116006450AB /* IrisScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3254673E2B5BE116006450AB /* IrisScanningView.swift */; };
 		325DC82C2B5BC9A400E35FA2 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 325DC82B2B5BC9A400E35FA2 /* images */; };
 		329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */; };
 		329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3254673E2B5BE116006450AB /* IrisScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrisScanningView.swift; sourceTree = "<group>"; };
 		325DC82B2B5BC9A400E35FA2 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../images; sourceTree = "<group>"; };
 		329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeOverView.swift; sourceTree = "<group>"; };
 		329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPTCHAType.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				32C53ACD2B5B7A08004DED18 /* ViewController.swift */,
 				329CF6022B5B7D6E0043FC18 /* TakeOverView.swift */,
 				329CF60C2B5BB3860043FC18 /* CaptchaRendererView.swift */,
+				3254673E2B5BE116006450AB /* IrisScanningView.swift */,
 				329CF60F2B5BBC330043FC18 /* SelectPhotoView.swift */,
 				329CF6062B5BA4C50043FC18 /* CAPTCHAValidationManager.swift */,
 				329CF6042B5BA4290043FC18 /* CAPTCHAType.swift */,
@@ -154,6 +157,7 @@
 				329CF6102B5BBC330043FC18 /* SelectPhotoView.swift in Sources */,
 				329CF60D2B5BB3860043FC18 /* CaptchaRendererView.swift in Sources */,
 				329CF6072B5BA4C50043FC18 /* CAPTCHAValidationManager.swift in Sources */,
+				3254673F2B5BE116006450AB /* IrisScanningView.swift in Sources */,
 				32C53ACC2B5B7A08004DED18 /* AppDelegate.swift in Sources */,
 				329CF6052B5BA4290043FC18 /* CAPTCHAType.swift in Sources */,
 				329CF6032B5B7D6E0043FC18 /* TakeOverView.swift in Sources */,
