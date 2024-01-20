@@ -22,6 +22,6 @@ while true; do
 	done
 
 	truncate -s 0 $tmp_file
-	python3 listener/packet_aggregator.py
+	python3 packet_aggregator.py
 #	sleep 1
 done
