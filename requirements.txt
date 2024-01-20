@@ -1,0 +1,9 @@
+pyaudio~=0.2.14
+SpeechRecognition==3.10.1
+--extra-index-url https://download.pytorch.org/whl/cu116
+torch==2.1.2
+fastapi~=0.95.0
+pydantic~=1.10.7
+uvicorn~=0.21.1
+numpy~=1.23.5
+whisper~=1.1.10

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 interface="en0"
-output_file="./packet_log.log"
+output_file="~/har-codcaptcha/packet_log.log"
 tmp_file="/tmp/packets.pcap"
-listener_log="./listener_log.log"
+listener_log="~/har-codcaptcha/listener_log.log"
 
 touch $output_file
 chmod 776 $output_file

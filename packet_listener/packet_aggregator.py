@@ -2,8 +2,10 @@ from pathlib import Path
 from time import time
 import re
 
-packet_log = Path('./packet_log.log')
-aggregate_file = Path('./packet_aggregate.log')
+project_dir = Path.home() / 'har-codcaptcha'
+
+packet_log = project_dir / 'packet_log.log'
+aggregate_file = project_dir / 'packet_aggregate.log'
 
 non_numeric = re.compile(r"\D+")
 
