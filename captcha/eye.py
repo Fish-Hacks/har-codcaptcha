@@ -12,15 +12,34 @@ class EyeCaptcha:
         self.font = cv2.FONT_HERSHEY_SIMPLEX
         self.threshold_value = 20
         self.verified_frame = 0
+
+        self.initThresholds = False
+        self.verified_frame_threshold = 10
+        self.w_init = 0
+        self.h_init = 0
+        self.w_threashold_offset = 0.18
+        self.h_threashold_offset = 0.15
+
         self.succeeded = False
 
 
-    def detect_and_verify(self):
+    def detect(self):
         try:
             while True:
                 ret, img = self.cap.read()
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 eyes = self.eye_cascade.detectMultiScale(gray, 1.1, 7)
+
+                if not self.initThresholds:
+                    if len(eyes) > 0:
+                        self.w_init = eyes[0, 2] / img.shape[1]
+                        self.h_init = eyes[0, 3] / img.shape[0]
+                        self.initThresholds = True
+
+                        print("INITIAL W:", self.w_init)
+                        print("INITIAL H:", self.h_init)
+                        print("W THRESHOLD:", self.w_init + self.w_threashold_offset)
+                        print("H THRESHOLD:", self.h_init + self.h_threashold_offset)
 
                 if len(eyes) > 0:
                     self.blink = False
@@ -29,12 +48,12 @@ class EyeCaptcha:
                 else:
                     self.handle_eye_closed(img)
 
-                if self.verified_frame >= 50:
+                if self.verified_frame >= self.verified_frame_threshold:
                     self.verified_frame = 0
                     self.succeeded = True
                     break
 
-                # cv2.imshow('img', img)
+                cv2.imshow('img', img)
                 k = cv2.waitKey(30) & 0xff
                 if k == 27:
                     break
@@ -56,6 +75,9 @@ class EyeCaptcha:
             scale_w = ew / img.shape[1]
             scale_h = eh / img.shape[0]
 
+            # print("Scale (W):", scale_w, self.w_init + self.w_threashold_offset)
+            # print("Scale (H):", scale_h, self.h_init + self.h_threashold_offset)
+
             cv2.putText(img, f"Scale (W): {scale_w:.2f}", (10, 100), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
             cv2.putText(img, f"Scale (H): {scale_h:.2f}", (10, 130), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
@@ -63,11 +85,11 @@ class EyeCaptcha:
 
     def verify_eye_scale(self, img, eyes):
         scale_h = eyes[0, 3] / img.shape[0]
-        scale_w = eyes[0, 2] / img.shape[1]
+        scale_w = eyes[0, 2] / img.shape[1] 
 
-        if scale_h > 0.5 and scale_w > 0.4:
+        if scale_h >= (self.h_init + self.h_threashold_offset) and scale_w > (self.w_init + self.w_threashold_offset):
             self.verified_frame += 1
-            # print("VERIFIED", self.verified_frame)
+            print("VERIFIED", self.verified_frame)
         else:
             self.verified_frame = 0
 
@@ -105,3 +127,7 @@ class EyeCaptcha:
         self.diameter.append(dmm)
         cv2.putText(img, str('{0:.2f}'.format(dmm)) + "mm", (10, 60), self.font, 1, (0, 0, 255), 2, cv2.LINE_AA)
         cv2.circle(roi_color2, center, 2, (0, 0, 255), 3)
+
+
+eye = EyeCaptcha()
+eye.detect()
