@@ -49,7 +49,7 @@ struct IrisScanningView: View {
             
             let session = URLSession(configuration: configuration)
             
-            let url = URL(string: "http://127.0.0.1:5000/iris")!
+            let url = URL(string: "http://127.0.0.1:5000/eye")!
             
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
