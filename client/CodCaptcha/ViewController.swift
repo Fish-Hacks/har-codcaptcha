@@ -40,25 +40,29 @@ class ViewController: NSViewController {
         window.hasShadow = false
         window.styleMask = [.borderless]
         window.collectionBehavior = [.canJoinAllSpaces, .stationary, .fullScreenAuxiliary]
-        window.backgroundColor = .red.withAlphaComponent(0.1)
+        window.backgroundColor = .clear
         window.titlebarAppearsTransparent = true
         
         window.title = ""
         
         window.toolbar = nil
-        window.ignoresMouseEvents = true
-        window.acceptsMouseMovedEvents = false
+        window.ignoresMouseEvents = false
         
         window.isMovableByWindowBackground = false
         
-        window.setFrame(NSScreen.main!.frame, display: true)
+        window.setFrame(.zero, display: true)
         window.isMovable = false
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
             self.createPopover()
         }
+    }
+    
+    override func viewDidLayout() {
+        super.viewDidLayout()
+        
     }
     
     func createPopover() {
@@ -80,5 +84,7 @@ class ViewController: NSViewController {
         popover = newView
         
         view.addSubview(popover)
+        
+        view.window!.setFrame(NSScreen.main!.frame, display: true)
     }
 }
