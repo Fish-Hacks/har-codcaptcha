@@ -21,6 +21,8 @@ struct SelectPhotoView: View {
     @State private var displayedImageURLs: [[URL]]
     @State private var hiddenCoordinate: CAPTCHACoordinate?
     
+    @State private var locked = false
+    
     init(onCompletion: @escaping ((Bool) -> Void)) {
         let imageDirectory = Bundle.main.url(forResource: "images", withExtension: "")!
         
@@ -89,10 +91,12 @@ struct SelectPhotoView: View {
                                                location: coordinate,
                                                url: displayedImageURLs[x][y]) {
                                 guard let index = targetSquareCoordinates.firstIndex(of: coordinate) else { return }
+                                locked = true
                                 
                                 withAnimation(.linear(duration: 1)) {
                                     hiddenCoordinate = coordinate
                                 }
+                                
                                 Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                                     if [true, false, false].randomElement()! {
                                         var newImageURL = targetClassImageURLs.randomElement()!
@@ -110,6 +114,8 @@ struct SelectPhotoView: View {
                                     withAnimation(.linear(duration: 1)) {
                                         hiddenCoordinate = nil
                                     }
+                                    
+                                    locked = false
                                 }
                                 
                             } onFailure: {
@@ -120,6 +126,7 @@ struct SelectPhotoView: View {
                     }
                 }
             }
+            .allowsHitTesting(!locked)
             
             Spacer()
             
