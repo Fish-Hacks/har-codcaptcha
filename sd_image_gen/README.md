@@ -1,1 +1,0 @@
-SD Script for Captcha Images
