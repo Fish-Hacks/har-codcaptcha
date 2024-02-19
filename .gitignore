@@ -92,3 +92,6 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Network Logger File
+services/network.txt
