@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from schema import IrisCaptchaRequest, PassphraseRequest, CaptchaResponse, PacketSizeResponse
-from transcription import Transcriber
 from eye import EyeCaptcha
 from netstat import parse_network
 import uvicorn
@@ -10,8 +9,6 @@ from pathlib import Path
 project_dir = Path.home() / 'har-codcaptcha'
 
 app = FastAPI()
-transcriber = Transcriber()
-eye = EyeCaptcha()
 aggregate_file = project_dir / 'packet_aggregate.log'
 
 if not aggregate_file.exists():
@@ -26,6 +23,7 @@ def health():
 
 @app.get('/eye')
 def do_eye_captcha():
+    eye = EyeCaptcha()
     eye.detect()
     return CaptchaResponse(eye.succeeded)
 
@@ -39,13 +37,6 @@ def get_packets_transferred():
     # Sigma male code
     result = parse_network("./tmp/network.txt")
     return PacketSizeResponse(result)
-
-
-@app.post('/stt')
-def do_passphrase_captcha(req: PassphraseRequest):
-    is_complete = transcriber.transcribe(req.text)
-    return CaptchaResponse(is_complete)
-
 
 if __name__ == "__main__":
     config = uvicorn.Config("app:app", port=5000, log_level="info")
