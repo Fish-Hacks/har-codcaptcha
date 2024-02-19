@@ -1,6 +1,6 @@
 ![image](https://github.com/Fish-Hacks/har-codcaptcha/assets/36725840/f2261d84-4af1-4d46-9bc6-65829e5e8867)
 
-[DevPost](https://devpost.com/software/cod-captcha-u701hs) | [Local Server](https://my.localserver.app/fish)
+Links: [DevPost](https://devpost.com/software/cod-captcha-u701hs) | [Local Server](https://my.localserver.app/fish)
 
 # Inspiration
 Captcha. <br/>
@@ -26,10 +26,10 @@ Evidently, we hate writing rhymes too.
 - *Surprise* : Failing 2 CAPTCHAs in a single session will reveal a special surprise 🎶
 
 ## How we built it
-- Stable Diffusion - Captcha Image Dataset generation & Waldo
-- Swift - MacOS Target device, UI takes over control until user completes captcha.
-- Python (OpenCV) - Iris / Pupil ; Eye verification captcha
-- Bash - Netstat (logging of network received / sent) - determines no. of captcha.
+- `Stable Diffusion` - Captcha Image Dataset generation & Waldo
+- `Swift` - MacOS Target device, UI takes over control until user completes captcha.
+- `Python (OpenCV)` - Iris / Pupil ; Eye verification captcha
+- `Bash` - Netstat (logging of network received / sent) - determines no. of captcha.
 
 # Setup
 ## Starting Packet Listener & API Service
